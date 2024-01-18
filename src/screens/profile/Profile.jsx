@@ -1,6 +1,6 @@
 import {Image, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import profile from '../../../assets/images/profile.jpg';
+import profileimage from '../../../assets/images/profileimage.jpg';
 import {moderateScale, scale, verticalScale} from 'react-native-size-matters';
 
 const Profile = () => {
@@ -20,7 +20,7 @@ const Profile = () => {
           Amit Patel
         </Text>
         <View style={styles.imageBox}>
-          <Image source={profile} style={styles.profileImage} />
+          <Image source={profileimage} style={styles.profileImage} />
         </View>
       </View>
 

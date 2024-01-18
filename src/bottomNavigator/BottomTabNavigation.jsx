@@ -5,7 +5,7 @@ import Home from '../screens/home/Home';
 import Report from '../screens/report/Report';
 import Profile from '../screens/profile/Profile';
 import home from '../../assets/images/home.png';
-import profile from '../../assets/images/profile.png';
+import profileimg from '../../assets/images/profileimg.png';
 import report from '../../assets/images/report.png';
 
 
@@ -95,7 +95,7 @@ const BottomTabNavigation = () => {
               }}>
               <View style={{padding: 10}}>
                 <Image
-                  source={profile}
+                  source={profileimg}
                   resizeMode="contain"
                   style={{
                     tintColor: focused ? '#fff' : '#000',

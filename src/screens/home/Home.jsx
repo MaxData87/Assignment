@@ -1,5 +1,6 @@
-import {Image, StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import React, {useState} from 'react';
+import DatePicker from 'react-native-date-picker';
 import line from '../../../assets/images/Line.png';
 import article from '../../../assets/images/article.png';
 import summarize from '../../../assets/images/summarize.png';
@@ -8,10 +9,20 @@ import square_foot from '../../../assets/images/square_foot.png';
 import credit_card from '../../../assets/images/credit_card.png';
 import emoji_events from '../../../assets/images/emoji_events.png';
 import calculate from '../../../assets/images/calculate.png';
+import dateimage from '../../../assets/images/date.png';
 import {ScrollView} from 'react-native-gesture-handler';
 import {moderateScale, scale, verticalScale} from 'react-native-size-matters';
 
 const Home = () => {
+  const [date, setDate] = useState(new Date());
+  const [open, setOpen] = useState(false);
+
+  const formatDate = (date) => {
+    const options = { year: 'numeric', month: 'short' };
+    return new Date(date).toLocaleDateString(undefined, options).toUpperCase();
+    console.log(date)
+  };
+
   return (
     <ScrollView>
       <View style={styles.mainContainer}>
@@ -26,7 +37,25 @@ const Home = () => {
         <View style={styles.box}>
           <View style={{gap: 10}}>
             <Text style={styles.attendenceStyle}>Attendence</Text>
-            <Text style={styles.dateStyle}>JAN 2024</Text>
+            <View style={{flexDirection: 'row', gap: 5}}>
+              <Text style={styles.dateStyle}>{formatDate(date)}</Text>
+              <TouchableOpacity onPress={() => setOpen(true)}>
+                <Image source={dateimage} style={{height: 20, width: 20}} />
+              </TouchableOpacity>
+              <DatePicker
+                modal
+                open={open}
+                date={date}
+                onConfirm={date => {
+                  setOpen(false);
+                  setDate(date);
+                  console.log(date)
+                }}
+                onCancel={() => {
+                  setOpen(false);
+                }}
+              />
+            </View>
           </View>
           <Text style={styles.dateStyle}>93%</Text>
           <Image source={line} style={styles.lineStyle} />
